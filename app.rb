@@ -14,5 +14,24 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-events_table = DB.from(:events)
-rsvps_table = DB.from(:rsvps)
+listings_table = DB.from(:listings)
+reviews_table = DB.from(:reviews)
+users_table = DB.from(:users)
+
+# before do
+#     @current_user = users_table.where(id: session["user_id"]).to_a[0]
+# end
+
+get "/" do
+    puts listings_table.all
+    @listings = listings_table.all.to_a
+    view "listings"
+end
+
+get "/listings/:id" do
+    @listing = listings_table.where(id: params[:id]).to_a[0]
+    # @rsvps = rsvps_table.where(event_id: @event[:id])
+    # @going_count = rsvps_table.where(event_id: @event[:id], going: true).count
+    # @users_table = users_table
+    view "indlisting"
+end
