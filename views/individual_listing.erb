@@ -26,20 +26,22 @@
         <p> Average Rating: <%= ratingsum/ratingcount %>
         
         <% for count in @review %>
+            <br> </br>
             <div class="media">
-                <% if count[:rating] = 1, 2 %>
-                    <i class="far fa-frown-open"></i>
-                <% elseif count[:rating] = 3 %>
-                    <i class="far fa-frown-open"></i>
-                <% elseif count[:rating] = 4, 5 %>
-                    <i class="far fa-frown-open"></i>
-                <% else %>
-                    <i class="far fa-frown-open"></i>
-                <% end %>
-                <h5 class="mt-0"><%= @users_table.where(id: count[:user_id]).to_a[0][:name] %></h5>
-                <%= count[:comments] %>
+                    <% if count[:rating] = 1 && count[:rating] = 2 %>
+                        <i class="far fa-frown-open fa-3x mr-3"></i>
+                    <% elsif count[:rating] = 3 %>
+                        <i class="far fa-meh fa-3x mr-3"></i>
+                    <% elsif count[:rating] = 4 && count[:rating] = 5 %>
+                        <i class="far fa-smile-wink fa-3x mr-3"></i>
+                    <% else %>
+                        <i class="fas fa-bomb fa-3x mr-3"></i>
+                    <% end %>
+                <div class="media-body">
+                    <h5 class="mt-0"><%= @users_table.where(id: count[:user_id]).to_a[0][:name] %></h5>
+                    <%= count[:comments] %>
+                </div>
             </div>
-        </div>
         <% end %>
                
         <p class="mt-5">
