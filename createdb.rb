@@ -9,7 +9,7 @@ DB.create_table! :listings do
   primary_key :id
   String :title
   String :buildtype
-  Boolean :avgrent
+  Float :avgrent
   String :location
   String :rooms
 end
@@ -17,7 +17,7 @@ DB.create_table! :reviews do
   primary_key :id
   foreign_key :listings_id
   foreign_key :user_id
-  Boolean :rating
+  Float :rating
   String :comments, text: true
 end
 DB.create_table! :users do
@@ -31,7 +31,7 @@ end
 listings_table = DB.from(:listings)
 
 listings_table.insert(title: "E2", 
-                    buildtype: "hotel",
+                    buildtype: "Hotel",
                     avgrent: 2000,
                     location: "E2 Apartments",
                     rooms: "500+")
@@ -39,4 +39,5 @@ listings_table.insert(title: "E2",
 listings_table.insert(title: "Optima Horizons", 
                     buildtype: "Building",
                     avgrent: 1800,
-                    location: "Optima Horizons")
+                    location: "Optima Horizons",
+                    rooms: "300-500")

@@ -7,8 +7,8 @@
         <br> </br>
         <h2>Tell us what you feel about <%= @listing[:title] %></h2>
         <br> </br>
-        
-        <form action="/">
+
+        <form action="/listings/<%= @listing[:id] %>/reviews/create">
         <div class="form-group">
             <label>How was your experience?</label>
             <select class="form-control" name="rating">
