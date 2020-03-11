@@ -5,26 +5,48 @@
             <%= @listing[:title] %>
         </h1>
         <p> Building Type: <%= @listing[:buildtype] %></p>
-        <p> Average Rent: <%= @listing[:avgrent] %></p>
+        <p> Average Rent: $<%= @listing[:avgrent] %></p>
         <p> Number of Rooms: <%= @listing[:rooms] %></p>
         
         <br> </br>
         
         <h2> Reviews: </h2>
-        <% for count in @review %>
 
-                <div class="media-body">
-                    <h5 class="mt-0"><%= @users_table.where(id: @review[:user_id]).to_a[0][:name] %></h5>
-                    <%= @review[:comments] %>
-                </div>
+        <% ratingcount = 0 %>
+        <% ratingsum = 0 %>
+
+        <% for count in @review %>
+            <% ratingsum = count[:rating] + ratingsum %>
+            <% ratingcount = ratingcount + 1 %>
+        <% end %>
+
+        <% puts ratingsum %>
+        <% puts ratingcount %>
+        
+        <p> Average Rating: <%= ratingsum/ratingcount %>
+        
+        <% for count in @review %>
+            <div class="media">
+                <% if count[:rating] = 1, 2 %>
+                    <i class="far fa-frown-open"></i>
+                <% elseif count[:rating] = 3 %>
+                    <i class="far fa-frown-open"></i>
+                <% elseif count[:rating] = 4, 5 %>
+                    <i class="far fa-frown-open"></i>
+                <% else %>
+                    <i class="far fa-frown-open"></i>
+                <% end %>
+                <h5 class="mt-0"><%= @users_table.where(id: count[:user_id]).to_a[0][:name] %></h5>
+                <%= count[:comments] %>
             </div>
+        </div>
         <% end %>
                
         <p class="mt-5">
             <% if @current_user %>
-                <a href="/listings/<%= @listing[:id] %>/reviews/new" class="btn btn-primary">RSVP now!</a>
+                <a href="/listings/<%= @listing[:id] %>/reviews/new" class="btn btn-primary">Leave a Review!</a>
             <% else %>
-                <a href="/logins/new" class="btn btn-danger">Please sign in to RSVP</a>
+                <a href="/logins/new" class="btn btn-danger">Please sign in to review</a>
             <% end %>
         </p>
 

@@ -1,3 +1,5 @@
 <h1>KELLOGG HOUSING PLATFORM</h1>
 
- 
+<% for listing in @listings %>
+    <p><a href="/listings/<%= listing[:id] %>"><%= listing[:title] %></a></p>
+<% end %> 
