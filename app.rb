@@ -30,8 +30,13 @@ end
 
 get "/listings/:id" do
     @listing = listings_table.where(id: params[:id]).to_a[0]
-    # @rsvps = rsvps_table.where(event_id: @event[:id])
+    @review = reviews_table.where(listings_id: @listings[:id])
     # @going_count = rsvps_table.where(event_id: @event[:id], going: true).count
     # @users_table = users_table
     view "indlisting"
+end
+
+get "/listings/:id/reviews/new" do
+    @listing = listings_table.where(id: params[:id]).to_a[0]
+    view "new_review"
 end

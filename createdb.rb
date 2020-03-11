@@ -11,6 +11,7 @@ DB.create_table! :listings do
   String :buildtype
   Boolean :avgrent
   String :location
+  String :rooms
 end
 DB.create_table! :reviews do
   primary_key :id
@@ -30,11 +31,12 @@ end
 listings_table = DB.from(:listings)
 
 listings_table.insert(title: "E2", 
-                    buildtype: "Apartment",
+                    buildtype: "hotel",
                     avgrent: 2000,
-                    location: "E2 Apartments")
+                    location: "E2 Apartments",
+                    rooms: "500+")
 
 listings_table.insert(title: "Optima Horizons", 
-                    buildtype: "Apartment",
+                    buildtype: "Building",
                     avgrent: 1800,
                     location: "Optima Horizons")

@@ -1,11 +1,29 @@
 <div class="row">
     <div class="col-sm-9">
-        <h2>
-            <i class="far fa-calendar-alt"></i>
+        <h1>
+            <i class="fas fa-<%= @listing[:buildtype].downcase%>"></i>
             <%= @listing[:title] %>
-        </h2>
-        <h1><%= @listing[:title] %></h1>
-        <p><%= @listing[:title] %></p>
+        </h1>
+        <p> Building Type: <%= @listing[:buildtype] %></p>
+        <p> Average Rent: <%= @listing[:avgrent] %></p>
+        <p> Number of Rooms: <%= @listing[:rooms] %></p>
+        
+        <br> </br>
+        
+        <h2> Reviews: </h2>
+        <% for review in @review %>
+            <div class="media">
+                <% if rsvp[:going] %>
+                    <i class="fas fa-thumbs-up fa-3x mr-3"></i>
+                <% else %>
+                    <i class="fas fa-thumbs-down fa-3x mr-3"></i>
+                <% end %>
+                <div class="media-body">
+                    <h5 class="mt-0"><%= @users_table.where(id: rsvp[:user_id]).to_a[0][:name] %></h5>
+                    <%= rsvp[:comments] %>
+                </div>
+            </div>        
+
 
     </div>
     <div class="col-sm-3">

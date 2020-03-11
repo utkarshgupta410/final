@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-9">
+        <h1>
+            <i class="fas fa-<%= @listing[:buildtype].downcase%>"></i>
+            <%= @listing[:title] %>
+        </h1>
+        <br> </br>
+        <h2>Tell us what you feel about <%= @listing[:title] %></h2>
+        <br> </br>
+        
+        <form action="/">
+        <div class="form-group">
+            <label>How was your experience?</label>
+            <select class="form-control" name="rating">
+            <option value="1">Very Poor!</option>
+            <option value="2">Not Great</option>
+            <option value="3">Average</option>
+            <option value="4">Good</option>
+            <option value="4">Excellent!</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Comments</label>
+            <textarea class="form-control" rows="3" name="comments"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
