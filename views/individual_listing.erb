@@ -24,10 +24,12 @@
 
         <% if ratingcount > 0 %>
             <% ratingavg = ratingsum/ratingcount %>
+            <p> <strong>Average Rating: <%= ratingavg %></strong></p>
         <% else %>
             <% ratingavg = 0 %>
+            <p> <strong>Average Rating: None</strong></p>
         <% end %>
-        <p> <strong>Average Rating: <%= ratingavg %></strong></p>
+        
                 
 
         

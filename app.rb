@@ -41,11 +41,13 @@ get "/new" do
 end
 
 get "/new/create" do
+        locationammend = params["location"]
+        locationammend << " Evanston"
         listings_table.insert(title: params["title"],
                        buildtype: params["buildtype"],
                        avgrent: params["avgrent"],
-                       rooms: params["rooms"],
-                       location: params["location"])
+                       rooms: params["rooms"], 
+                       location: locationammend)
         view "new_create"
 end
 
