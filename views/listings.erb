@@ -9,11 +9,11 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><%=listing[:title]%></h5>
-                    <a href="/listings/<%= listing[:id] %>" class="btn btn-primary">See Listing</a>
+                    <a href="/listings/<%= listing[:id] %>" class="btn btn-info">See Listing</a>
                 </div>
             </div>
         <% end %>
     </div>
     <div class="col-sm-3">
-        <a href="/new" class="btn btn-primary">Create New Listing</a>
+        <a href="/new" class="btn btn-danger">+Create New Listing</a>
     </div>
