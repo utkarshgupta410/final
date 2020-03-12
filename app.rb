@@ -35,6 +35,19 @@ get "/listings/:id" do
     view "individual_listing"
 end
 
+get "/new" do
+    view "new_listing"
+end
+
+get "/new/create" do
+        listings_table.insert(title: params["title"],
+                       buildtype: params["buildtype"],
+                       avgrent: params["avgrent"],
+                       rooms: params["rooms"],
+                       location: params["location"])
+        view "new_create"
+end
+
 get "/listings/:id/reviews/new" do
     @listing = listings_table.where(id: params[:id]).to_a[0]
     view "new_review"
