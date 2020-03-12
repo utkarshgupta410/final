@@ -1,15 +1,19 @@
-<h1>KELLOGG HOUSING PLATFORM</h1>
-
-
-
-<% for listing in @listings %>
-    <div class="card" style="width: 18rem;">
-    <i class="fas fa-<%= listing[:buildtype].downcase%>"></i>
-        <div class="card-body">
-            <h5 class="card-title"><%=listing[:title]%></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/listings/<%= listing[:id] %>" class="btn btn-primary">See Listing</a>
-        </div>
+<div class="row">
+    <div class="col-sm-9">
+    <h1 class="text-center">KELLOGG HOUSING PLATFORM</h1>
+        <% for listing in @listings %>
+            <br></br>
+            <div class="card text-center">
+                <div class="card-header text-muted">
+                    <%= listing[:buildtype]%>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><%=listing[:title]%></h5>
+                    <a href="/listings/<%= listing[:id] %>" class="btn btn-primary">See Listing</a>
+                </div>
+            </div>
+        <% end %>
     </div>
-
-<% end %> 
+    <div class="col-sm-3">
+        <a href="/new" class="btn btn-primary">Create New Listing</a>
+    </div>
