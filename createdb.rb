@@ -33,7 +33,7 @@ listings_table = DB.from(:listings)
 listings_table.insert(title: "E2", 
                     buildtype: "Hotel",
                     avgrent: 2000,
-                    location: "E2 Apartments",
+                    location: "E2 Apartments evanston",
                     rooms: "500+")
 
 listings_table.insert(title: "Optima Horizons", 

@@ -67,6 +67,22 @@
     <div class="col-sm-3">
 
         <p><%= @listing[:location] %></p>
+        <% @lat = 0.0 %>
+        <% @long = 0.0 %>
+          
+        <% @location_ind = @listing[:location] %>
+        <% @results = Geocoder.search(@listing[:location]) %> 
+        <% @lat_long = @results.first.coordinates %> 
+        <% puts @lat_long %>
+        <% @lat = @lat_long[0] %>
+        <% @long = @lat_long[1] %>
+
+      <iframe
+        width="400"
+        height="300"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw&q=<%= @lat %>,<%=@long%>&zoom=14" allowfullscreen>
+      </iframe>
 
     </div>
 </div>
