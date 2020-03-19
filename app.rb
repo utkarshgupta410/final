@@ -68,6 +68,7 @@ end
 
 get "/users/new" do
     view "new_user"
+    
 end
 
 post "/users/create" do
