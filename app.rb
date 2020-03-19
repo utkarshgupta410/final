@@ -74,6 +74,17 @@ post "/users/create" do
     puts params
     hashed_password = BCrypt::Password.create(params["password"])
     users_table.insert(name: params["name"], email: params["email"], password: hashed_password)
+
+    account_sid = "AC0fcdfd2d20ec626046ab9567949c4e12"
+    auth_token = "edb27044107f1ec1689544e81181092e"
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    client.messages.create(
+    from: "+12075219142", 
+    to: "+919838070934",
+    body: "Thank you for signing up with the Kellogg Housing Platform!"
+    )
+    
     view "create_user"
 end
 
@@ -87,7 +98,8 @@ post "/logins/create" do
     if user && BCrypt::Password::new(user[:password]) == params["password"]
         session["user_id"] = user[:id]
         @current_user = user
-        view "create_login"
+        
+        redirect "/"
     else
         view "create_login_failed"
     end
