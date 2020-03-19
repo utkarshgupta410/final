@@ -75,8 +75,10 @@ post "/users/create" do
     hashed_password = BCrypt::Password.create(params["password"])
     users_table.insert(name: params["name"], email: params["email"], password: hashed_password)
 
-    account_sid = "AC0fcdfd2d20ec626046ab9567949c4e12"
-    auth_token = "edb27044107f1ec1689544e81181092e"
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    # account_sid = "AC0fcdfd2d20ec626046ab9567949c4e12"
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
+    # auth_token = "edb27044107f1ec1689544e81181092e"
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     client.messages.create(
